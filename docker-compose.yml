@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+
+  s3:
+    image: localstack/localstack:latest
+    restart: always
+    ports:
+      - '4566-4583:4566-4583'
+    environment:
+      DEBUG: 1
+      DATA_DIR: /tmp/localstack/data
+      EDGE_PORT: 4566
+      SERVICES: lambda,s3
+    volumes:
+      - "./.localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
