@@ -8,7 +8,6 @@ import com.bilginyuksel.digitivation.port.response.InvitationFileResponse;
 import com.bilginyuksel.digitivation.port.response.InvitationResponse;
 import com.bilginyuksel.digitivation.BusinessUseCase;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,25 +20,25 @@ import java.util.List;
 @RequestMapping("/invitations")
 @AllArgsConstructor
 public class InvitationHttpPort {
-    private BusinessUseCase<Invitation, Invitation> createInvitationUseCase;
-    private BusinessUseCase<String, Invitation> getInvitationUseCase;
-    private BusinessUseCase<UploadInvitationFiles, List<InvitationFile>> uploadInvitationUseCase;
+    private BusinessUseCase<Invitation, Invitation> useCaseCreateInvitation;
+    private BusinessUseCase<String, Invitation> useCaseGetInvitation;
+    private BusinessUseCase<UploadInvitationFiles, List<InvitationFile>> useCaseUploadInvitation;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public InvitationResponse createWeddingInvitation(@RequestBody InvitationRequest request) {
-        return InvitationResponse.from(createInvitationUseCase.handle(request.toInvitation()));
+        return InvitationResponse.from(useCaseCreateInvitation.handle(request.toInvitation()));
     }
 
     @GetMapping("/{id}")
     public InvitationResponse getWeddingInvitation(@PathVariable String id) {
-        return InvitationResponse.from(getInvitationUseCase.handle(id));
+        return InvitationResponse.from(useCaseGetInvitation.handle(id));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<InvitationFileResponse> uploadInvitationFiles(@PathVariable String id, @RequestParam List<MultipartFile> files) throws IOException {
-        return uploadInvitationUseCase.handle(UploadInvitationFiles.create()
+        return useCaseUploadInvitation.handle(UploadInvitationFiles.create()
                         .invitationId(id)
                         .files(mapMultipartFiles(files))
                         .build())
