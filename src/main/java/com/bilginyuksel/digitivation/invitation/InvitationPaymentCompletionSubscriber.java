@@ -1,5 +1,6 @@
 package com.bilginyuksel.digitivation.invitation;
 
+import com.bilginyuksel.digitivation.invitation.model.Invitation;
 import com.bilginyuksel.digitivation.invitation.model.Status;
 import com.bilginyuksel.digitivation.payment.PaymentEmailSender;
 import com.bilginyuksel.digitivation.payment.ReceiveThreeDSecurePaymentUseCase;
@@ -25,13 +26,16 @@ public class InvitationPaymentCompletionSubscriber implements Subscriber<Payment
         var invitationId = message.getConversationId();
 
         var invitation = repository.find(invitationId);
+        updateInvitationPaymentStatus(invitation);
+
+        paymentEmailSender.send("Payment successfully completed, Invitation will be prepared between 2-3 days.");
+    }
+
+    private void updateInvitationPaymentStatus(Invitation invitation) {
         invitation.setPaid(true);
         invitation.setStatus(Status.PENDING);
 
         repository.save(invitation);
-
-        // TODO: should we send the email here after invitation status is updated or in payment stage ??
-        paymentEmailSender.send("Payment successfully completed, Invitation will be prepared between 2-3 days.");
     }
 
     @Override
