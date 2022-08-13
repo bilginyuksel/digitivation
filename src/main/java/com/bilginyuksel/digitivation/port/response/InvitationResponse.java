@@ -1,7 +1,10 @@
 package com.bilginyuksel.digitivation.port.response;
 
 import com.bilginyuksel.digitivation.invitation.model.Invitation;
+import com.bilginyuksel.digitivation.invitation.model.InvitationFile;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 public class InvitationResponse {
@@ -12,7 +15,7 @@ public class InvitationResponse {
     private EventResponse hennaNight;
     private String status;
     private boolean isPaid;
-    private String files;
+    private List<String> files;
 
     public static InvitationResponse from(Invitation weddingInvitation) {
         var response = new InvitationResponse();
@@ -59,6 +62,7 @@ public class InvitationResponse {
 
         response.isPaid = weddingInvitation.isPaid();
         response.status = weddingInvitation.getStatus().name();
+        response.files = weddingInvitation.getFiles().stream().map(InvitationFile::getUrl).toList();
         return response;
     }
 }

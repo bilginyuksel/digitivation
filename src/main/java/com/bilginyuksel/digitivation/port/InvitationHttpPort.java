@@ -21,16 +21,14 @@ import java.util.List;
 @RequestMapping("/invitations")
 @AllArgsConstructor
 public class InvitationHttpPort {
-    private BusinessUseCase<Invitation, Invitation> useCaseCreateInvitation;
+    private BusinessUseCase<Invitation, String> useCaseCreateInvitation;
     private BusinessUseCase<String, Invitation> useCaseGetInvitation;
     private BusinessUseCase<UploadInvitationFiles, List<InvitationFile>> useCaseUploadInvitation;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<InvitationResponse> createWeddingInvitation(@RequestBody InvitationRequest request) {
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(InvitationResponse.from(useCaseCreateInvitation.handle(request.toInvitation())));
+    public ResponseEntity<String> createWeddingInvitation(@RequestBody InvitationRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(useCaseCreateInvitation.handle(request.toInvitation()));
     }
 
     @GetMapping("/{id}")

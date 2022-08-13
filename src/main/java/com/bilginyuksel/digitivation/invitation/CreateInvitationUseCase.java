@@ -1,24 +1,30 @@
 package com.bilginyuksel.digitivation.invitation;
 
 import com.bilginyuksel.digitivation.BusinessUseCase;
+import com.bilginyuksel.digitivation.invitation.configuration.InvitationConfiguration;
 import com.bilginyuksel.digitivation.invitation.model.Invitation;
-import com.bilginyuksel.digitivation.invitation.model.Status;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CreateInvitationUseCase implements BusinessUseCase<Invitation, Invitation> {
+public class CreateInvitationUseCase implements BusinessUseCase<Invitation, String> {
     private InvitationRepository invitationRepository;
+    private InvitationConfiguration invitationConfiguration;
 
     @Override
-    public Invitation handle(Invitation invitation) {
-        invitation.setStatus(Status.PENDING_PAYMENT);
-        invitation.setPaid(false);
+    public String handle(Invitation invitation) {
+        calculatePrice(invitation);
 
-        var id = invitationRepository.save(invitation);
-        invitation.setId(id);
+        return invitationRepository.save(invitation);
+    }
 
-        return invitation;
+    private void calculatePrice(Invitation invitation) {
+        var price = invitationConfiguration.getBasePrice();
+        var discount = price * invitationConfiguration.getDiscount();
+        var paidPrice = invitationConfiguration.getBasePrice() - discount;
+
+        invitation.setPrice(price);
+        invitation.setPaidPrice(paidPrice);
     }
 }

@@ -20,6 +20,8 @@ public class Invitation {
     private List<InvitationFile> files;
     private Status status;
     private boolean paid;
+    private double price;
+    private double paidPrice;
 
     public void addFile(InvitationFile file) {
         if (files == null) files = new ArrayList<>();
