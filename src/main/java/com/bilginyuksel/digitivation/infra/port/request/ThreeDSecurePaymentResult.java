@@ -1,4 +1,4 @@
-package com.bilginyuksel.digitivation.port.request;
+package com.bilginyuksel.digitivation.infra.port.request;
 
 import com.bilginyuksel.digitivation.payment.model.CompletePayment;
 

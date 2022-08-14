@@ -1,4 +1,4 @@
-package com.bilginyuksel.digitivation.port.response;
+package com.bilginyuksel.digitivation.infra.port.response;
 
 import com.bilginyuksel.digitivation.invitation.model.InvitationFile;
 

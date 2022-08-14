@@ -1,4 +1,4 @@
-package com.bilginyuksel.digitivation.port.response;
+package com.bilginyuksel.digitivation.infra.port.response;
 
 public record ThreeDSecureInitiatePaymentResponse(
         String htmlContent

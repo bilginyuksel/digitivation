@@ -1,7 +1,7 @@
-package com.bilginyuksel.digitivation.adapter;
+package com.bilginyuksel.digitivation.infra.adapter;
 
 import com.bilginyuksel.digitivation.BusinessException;
-import com.bilginyuksel.digitivation.adapter.configuration.IyzipayConfiguration;
+import com.bilginyuksel.digitivation.infra.adapter.configuration.IyzipayConfiguration;
 import com.bilginyuksel.digitivation.payment.PaymentProvider;
 import com.bilginyuksel.digitivation.payment.model.Card;
 import com.bilginyuksel.digitivation.payment.model.CompletePayment;

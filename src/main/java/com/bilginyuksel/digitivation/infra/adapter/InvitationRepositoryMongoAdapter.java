@@ -1,4 +1,4 @@
-package com.bilginyuksel.digitivation.adapter;
+package com.bilginyuksel.digitivation.infra.adapter;
 
 import com.bilginyuksel.digitivation.invitation.InvitationRepository;
 import com.bilginyuksel.digitivation.invitation.model.Invitation;

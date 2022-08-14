@@ -1,12 +1,12 @@
-package com.bilginyuksel.digitivation.port;
+package com.bilginyuksel.digitivation.infra.port;
 
+import com.bilginyuksel.digitivation.infra.port.request.InvitationRequest;
+import com.bilginyuksel.digitivation.infra.port.response.CreateInvitationResponse;
+import com.bilginyuksel.digitivation.infra.port.response.InvitationFileResponse;
+import com.bilginyuksel.digitivation.infra.port.response.InvitationResponse;
 import com.bilginyuksel.digitivation.invitation.model.Invitation;
 import com.bilginyuksel.digitivation.invitation.model.InvitationFile;
 import com.bilginyuksel.digitivation.invitation.model.UploadInvitationFiles;
-import com.bilginyuksel.digitivation.port.request.InvitationRequest;
-import com.bilginyuksel.digitivation.port.response.CreateInvitationResponse;
-import com.bilginyuksel.digitivation.port.response.InvitationFileResponse;
-import com.bilginyuksel.digitivation.port.response.InvitationResponse;
 import com.bilginyuksel.digitivation.BusinessUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

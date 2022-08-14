@@ -1,4 +1,4 @@
-package com.bilginyuksel.digitivation.adapter.configuration;
+package com.bilginyuksel.digitivation.infra.adapter.configuration;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;

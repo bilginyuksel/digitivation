@@ -1,11 +1,11 @@
-package com.bilginyuksel.digitivation.port;
+package com.bilginyuksel.digitivation.infra.port;
 
 import com.bilginyuksel.digitivation.BusinessUseCase;
+import com.bilginyuksel.digitivation.infra.port.request.ThreeDSecurePaymentRequest;
+import com.bilginyuksel.digitivation.infra.port.request.ThreeDSecurePaymentResult;
+import com.bilginyuksel.digitivation.infra.port.response.ThreeDSecureInitiatePaymentResponse;
 import com.bilginyuksel.digitivation.payment.model.CompletePayment;
 import com.bilginyuksel.digitivation.payment.model.Payment;
-import com.bilginyuksel.digitivation.port.request.ThreeDSecurePaymentRequest;
-import com.bilginyuksel.digitivation.port.request.ThreeDSecurePaymentResult;
-import com.bilginyuksel.digitivation.port.response.ThreeDSecureInitiatePaymentResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
