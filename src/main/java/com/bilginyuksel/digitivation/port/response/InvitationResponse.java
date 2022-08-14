@@ -62,7 +62,10 @@ public class InvitationResponse {
 
         response.isPaid = weddingInvitation.isPaid();
         response.status = weddingInvitation.getStatus().name();
-        response.files = weddingInvitation.getFiles().stream().map(InvitationFile::getUrl).toList();
+
+        if (weddingInvitation.getFiles() != null) {
+            response.files = weddingInvitation.getFiles().stream().map(InvitationFile::getUrl).toList();
+        }
         return response;
     }
 }

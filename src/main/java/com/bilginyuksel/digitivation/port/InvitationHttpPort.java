@@ -4,6 +4,7 @@ import com.bilginyuksel.digitivation.invitation.model.Invitation;
 import com.bilginyuksel.digitivation.invitation.model.InvitationFile;
 import com.bilginyuksel.digitivation.invitation.model.UploadInvitationFiles;
 import com.bilginyuksel.digitivation.port.request.InvitationRequest;
+import com.bilginyuksel.digitivation.port.response.CreateInvitationResponse;
 import com.bilginyuksel.digitivation.port.response.InvitationFileResponse;
 import com.bilginyuksel.digitivation.port.response.InvitationResponse;
 import com.bilginyuksel.digitivation.BusinessUseCase;
@@ -27,8 +28,9 @@ public class InvitationHttpPort {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> createWeddingInvitation(@RequestBody InvitationRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(useCaseCreateInvitation.handle(request.toInvitation()));
+    public ResponseEntity<CreateInvitationResponse> createWeddingInvitation(@RequestBody InvitationRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(CreateInvitationResponse.from(useCaseCreateInvitation.handle(request.toInvitation())));
     }
 
     @GetMapping("/{id}")
