@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "fc913686-1dd6-474e-9c65-f030cee02481",
+		"name": "digitivation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10334503"
+	},
+	"item": [
+		{
+			"name": "Create Wedding Request Invitation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groom\": {\n        \"name\": \"John\",\n        \"surname\": \"Doe\",\n        \"fatherName\": \"James\",\n        \"fatherSurname\": \"Doe\",\n        \"motherName\": \"Lois\",\n        \"motherSurname\": \"Doe\"\n    },\n    \"bride\": {\n        \"name\": \"Jenny\",\n        \"surname\": \"Bogal\",\n        \"fatherName\": \"Johnny\",\n        \"fatherSurname\": \"Bogel\",\n        \"motherName\": \"Elena\",\n        \"motherSurname\": \"Bogel\"\n    },\n    \"marriage\": {\n        \"time\": \"2023-05-10T19:30:00\",\n        \"place\": \"Nikah Salonu\",\n        \"customMessage\": \"Welcome to my marriage!\"\n    },\n    \"wedding\": { \n        \"time\": \"2023-10-10T19:30:00\",\n        \"place\": \"Canary Islands\",\n        \"customMessage\": \"Welcome to my wedding!\"\n    },\n    \"hennaNight\": {\n        \"time\": \"2023-07-04T22:00:00\",\n        \"place\": \"My apartment\",\n        \"customMessage\": \"come to the wedding\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/invitations",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invitations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Wedding Invitation Photos/Videos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": [
+								"/Users/bilginyuksel/workspace/pdfgen/Dockerfile",
+								"/Users/bilginyuksel/workspace/pdfgen/index.html",
+								"/Users/bilginyuksel/workspace/pdfgen/index.js"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/invitations/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invitations",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62f7921906736c44d7a0997d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wedding Invitation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/invitations/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invitations",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62f7921906736c44d7a0997d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resourceId\": \"62f7921906736c44d7a0997d\",\n    \"cardNumber\": \"5528790000000008\",\n    \"expireYear\": \"2030\",\n    \"expireMonth\": \"12\",\n    \"cvc\": \"123\",\n    \"cardHolderName\": \"John Doe\",\n    \"buyerName\": \"John\",\n    \"buyerSurname\": \"Doe\",\n    \"buyerGsmNumber\": \"+905350000000\",\n    \"buyerEmail\": \"email@email.com\",\n    \"buyerIdentityNumber\":\"74300864791\",\n    \"buyerCity\": \"Izmir\",\n    \"buyerCountry\": \"Turkey\",\n    \"buyerRegistrationAddress\": \"Atasehir Mah, 8216 Sok, Pelit Sitesi\",\n    \"price\": 1.0,\n    \"paidPrice\": 2.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/payments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
