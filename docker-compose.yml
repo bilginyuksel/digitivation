@@ -17,7 +17,6 @@ services:
       - mongo
       - s3
 
-
   mongo:
     image: mongo
     restart: always

@@ -1,11 +1,11 @@
 # base image to build a JRE
-FROM amazoncorretto:18
+FROM maven:3.8.6
 
 WORKDIR /app
 
 COPY . /app
 
-RUN chmod +x mvnw && sh mvnw package
+RUN mvn package -DskipTests=true
 
 # main app image
 FROM openjdk:18
