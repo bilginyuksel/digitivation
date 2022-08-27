@@ -1,5 +1,23 @@
 version: '3.9'
 services:
+  digitivation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      MONGO_CONNECTIONURI: mongodb://mongo:27017
+      MONGO_DATABASE: digitivation
+      MONGO_USERNAME: root
+      MONGO_PASSWORD: toor
+      SERVER_PORT: 3000
+    depends_on:
+      - mongo
+      - s3
+
+
   mongo:
     image: mongo
     restart: always
