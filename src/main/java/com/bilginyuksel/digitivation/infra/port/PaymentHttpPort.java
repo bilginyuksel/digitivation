@@ -16,6 +16,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/payments")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @AllArgsConstructor
 public class PaymentHttpPort {
     private BusinessUseCase<Payment, String> useCaseInitiateThreeDSecurePayment;

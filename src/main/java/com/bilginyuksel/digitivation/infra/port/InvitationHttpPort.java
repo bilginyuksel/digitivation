@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/invitations")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @AllArgsConstructor
 public class InvitationHttpPort {
     private BusinessUseCase<Invitation, String> useCaseCreateInvitation;
